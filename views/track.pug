@@ -1,0 +1,94 @@
+extends base
+
+block content
+  section.section-details
+    .heading-box
+      .heading-top
+        h1.heading-secondary.ma-bt-tiny
+          span= track.title
+        .details__text.ma-bt-small
+          span#trackIdSpan= `ID: ${track._id}`
+          | 
+          span= `Priority: ${track.priority}`
+          | 
+          span= `Category: ${track.category}`
+          | 
+          span= `Status: ${track.status}`
+        .description__text
+          .description__text--user
+            .user__name-img
+              - const userPhoto = `/img/users/${track.user ? track.user.photo : '/default.jpg'}`
+              - const userName = track.user ? track.user.name : 'Deleted'
+              img(src=`${userPhoto}` alt=`${userName}` class='user__pic--img')
+              span.user__name--bold= userName
+            .comment__item--actions
+              div.ql-dot.btn--dot
+              ul.comment__items
+                li.item__option: button.btn__edit-item.btn__quote Quote
+                li.item__option: button.btn__edit-item.btn__edit Edit
+                li.item__option: button.btn__edit-item.btn__del Delete
+          p= track.description  
+  
+  section.section-post_comment
+    form.form.form-comment.fpc
+      .heading-box.heading-box--comment
+        .form__group--postComment
+          input(name='comment' type='hidden')
+          .div#editor-container
+        .details__btns
+          button.btn-drawn.lined Post Comment
+
+  section.comment__container.section-comments
+    -
+      let count = track.comments.length
+      track.comments.forEach(el => {
+        if (!el.user) count -= 1
+      })
+    p.cmt-length= `Comments(${count})`
+    each comment, index in track.comments
+      if (user && comment.user)
+        form.form.form-comment
+          .heading-box.heading-box--comment
+            .form__group--postComment.quill__form
+              div(class=`${comment._id}`)
+              input(name=`comment-${comment._id}` type='hidden' class=`${comment.comment}`)
+              .div(id=`editor-cmt-container-${comment._id}`)
+
+              .description__text--user-cmt
+                .user__name-img
+                  - const cmtUserPhoto = `/img/users/${comment.user ? comment.user.photo : '/default.jpg'}`
+                  - const cmtUserName = comment.user ? comment.user.name : 'Deleted'
+                  img(src=`${cmtUserPhoto}`, alt=`${cmtUserName}` class='user__pic--img user__pic--img-cmt')
+                  span= cmtUserName
+
+              .comment__item--actions
+                div(class=`ql-dot ${comment._id}`)
+                ul.comment__items-comments(id=`ul-${comment._id}`)
+                  li.item__option: button.btn__edit-item.btn__quote--comment Quote
+                  li.item__option: button.btn__edit-item.btn__edit--comment(id=`bec-${comment._id}` class=`cu-${comment.user._id} u-${user._id}`) Edit
+                  li.item__option: button.btn__edit-item.btn__del--comment(id=`bdc-${comment._id}`) Delete
+            .details__btns.hid-btn(id=`det-btn-ctm-${comment._id}`)
+              button(class=`btn-drawn lined quill-${comment._id}` id=`btn-send-${comment._id}`) Send
+      
+      else if (!user.active)
+        form.form.form-comment
+          .heading-box.heading-box--comment
+            .form__group--postComment.quill__form
+              div(class=`${comment._id}`)
+              input(name=`comment-${comment._id}` type='hidden' class=`${comment.comment}`)
+              .div(id=`editor-cmt-container-${comment._id}`)
+
+              .description__text--user-cmt
+                .user__name-img
+                  - const cmtUserPhoto = `/img/users/${comment.user ? comment.user.photo : '/default.jpg'}`
+                  - const cmtUserName = comment.user ? comment.user.name : 'Deleted'
+                  img(src=`${cmtUserPhoto}`, alt=`${cmtUserName}` class='user__pic--img user__pic--img-cmt')
+                  span= cmtUserName
+
+              .comment__item--actions
+                div(class=`ql-dot ${comment._id}`)
+                ul.comment__items-comments(id=`ul-${comment._id}`)
+                  li.item__option: button.btn__edit-item.btn__quote--comment Quote
+                  //- - const uniqueId = Math.floor(Math.random() * 9999999999) * new Date().getUTCMilliseconds()
+                  //- li.item__option: button.btn__edit-item.btn__edit--comment(id=`bec-${comment._id}` class=`cu-${uniqueId} u-${uniqueId}`) Edit
+                  li.item__option: button.btn__edit-item.btn__del--comment(id=`bdc-${comment._id}`) Delete

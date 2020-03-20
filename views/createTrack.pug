@@ -1,0 +1,37 @@
+extends base
+
+block content
+  main.main
+    .create_track-form
+      h2.heading-secondary.ma-bt-lg= title
+      //- form.form.form--track-test
+      .form__group
+        label.form__label(for='name') Title
+        input#name.form__input(type='text', placeholder='Track name', required, name='name')
+      .form__group
+        span.form__label Priority
+        select#add__priority.select__priority
+          option(value='Low') Low
+          option(value='Normal' selected) Normal
+          option(value='High') High          
+      .form__group
+        label.form__label(for='desc') Description
+        textarea#description.form__input(rows='4',  name='desc', placeholder='Your track description')
+      .form__group.ma-bt-md
+        label.form__label(for='category') Category
+        input#category.form__input(type='text', placeholder='Web development, database, etc...', name='category')
+      .form__group
+        form(name='statusForm').radio__all
+          span.form__label-two Status
+          .radio__status
+            input#open(type='radio', name='status', value='Open' checked)
+            label.form__label-two(for='open') Open
+          .radio__status
+            input#in-progress(type='radio', name='status', value='InProgress')
+            label.form__label-two(for='in-progress') In Progress
+          .radio__status
+            input#resolved(type='radio', name='status', value='Resolved')
+            label.form__label-two(for='resolved') Resolved
+      .form__group
+        button.btn-drawn.lined.btn__create-track Create track
+

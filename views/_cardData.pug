@@ -1,0 +1,5 @@
+mixin cardData(icon, text)
+  .card__data
+    svg.card__icon
+      use(xlink:href=`/img/icons.svg#icon-${icon}`)
+    span= text

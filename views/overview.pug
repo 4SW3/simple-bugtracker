@@ -1,0 +1,109 @@
+extends base
+
+include _cardData
+
+block content
+  main.main
+    .filter__panel-container
+      .filter__panel-toolbar
+        form.filter__form
+          .panel-body
+            fieldset.filter__filter-container
+              span.fieldset-span Priority
+              .filter__option-checkbox
+                input(type='checkbox', name='priority', id='low', value='Low')
+                label.filter__label(for='low') Low
+              .filter__option-checkbox
+                input(type='checkbox', name='priority', id='normal', value='Normal')
+                label.filter__label(for='normal') Normal
+              .filter__option-checkbox
+                input(type='checkbox', name='priority', id='high', value='High')
+                label.filter__label(for='high') High
+            fieldset.filter__filter-container
+              span.fieldset-span Status
+              .filter__option-checkbox
+                input(type='checkbox', name='status', id='open', value='Open')
+                label.filter__label(for='open') Open
+              .filter__option-checkbox
+                input(type='checkbox', name='status', id='in-progress', value='InProgress')
+                label.filter__label(for='in-progress') In Progress
+              .filter__option-checkbox
+                input(type='checkbox', name='status', id='resolved' value='Resolved')
+                label.filter__label(for='resolved') Resolved
+            fieldset.filter__filter-container
+              span.fieldset-span Sort By
+              .filter__option-checkbox
+                input(type='checkbox', name='sort', id='title', value='title')
+                label.filter__label(for='title') Title
+              .filter__option-checkbox
+                input(type='checkbox', name='sort', id='status', value='status')
+                label.filter__label(for='status') Status
+              .filter__option-checkbox
+                input(type='checkbox', name='sort', id='priority', value='priority')
+                label.filter__label(for='priority') Priority
+              .filter__option-checkbox
+                input(type='checkbox', name='sort', id='category', value='category')
+                label.filter__label(for='category') Category
+            button.btn.btn--dark.btn--filter Filter
+
+    .card-container
+      each track in tracks
+        .card
+          .card__header
+            .card__top
+              -
+                let status;
+                switch(track.status) {
+                  case 'Open':
+                    status = 'heading-tertiary-open'
+                    break;
+                  case 'InProgress':
+                    status = 'heading-tertiary-inprogress'
+                    break;
+                  case 'Resolved':
+                    status = 'heading-tertiary-resolved'
+                    break;
+                }
+              h3(class=`heading-tertiary ${status}`)
+                span= track.status
+            .user__data
+              - const userPhoto = `/img/users/${track.user ? track.user.photo : '/default.jpg'}`
+              - const userName = track.user ? track.user.name : 'Deleted'
+              img(src=`${userPhoto}` alt=`${userName}`, class='user__pic--img')
+              .user__name: span= userName
+          
+          .card__details
+            h4.card__sub-heading= track.title
+            p.card__text= `Priority: ${track.priority}`
+            p.card__text= track.description
+
+            - const date = track.createdAt.toLocaleString('en-us', { month: 'short', day: 'numeric', year: 'numeric' })
+            +cardData('flag', track.category)
+            +cardData('calendar', date)
+
+          .card__footer
+            a.btn-drawn.lined(href=`/track/${track.slug}`) Details
+
+    -if (pages > 1)
+      //- We must use '==' so it can compare string to numbers
+      ul.pagination.modal.text-center
+        -if (page == 1) 
+          li.disabled: a.named First
+        -else
+          li: a.named(href='/overview?page=1') First
+        
+        -let i = (Number(page) > 5 ? Number(page) - 4 : 1)
+        -if (i !== 1)
+          li.disabled: a ...
+        -for (; i <= (Number(page) + 4) && i <= pages; i++)
+          -if (i == page)
+            li.active: a= i 
+          -else
+            li: a(href=`/overview?page=${i}`)= i
+          -if (i == Number(page) + 4 && i < pages)
+            li.disabled: a ...
+        
+        -if (page == pages)
+          li.disabled: a.named Last
+        -else
+          li: a.named(href=`/overview?page=${pages}`) Last

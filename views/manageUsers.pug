@@ -1,0 +1,45 @@
+extends base
+
+include _navItem
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings', true)
+          +navItem('/myTracks', 'My tracks', 'briefcase', false)
+          +navItem('/myComments', 'My comments', 'star', false)
+          +navItem('#', 'Chat', 'credit-card', false)
+
+        - if (user.role === 'owner' || user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('/manageTracks', 'Manage tracks', 'map')
+              +navItem('/manageUsers', 'Manage users', 'users')
+              +navItem('/manageComments', 'Manage comments', 'star')
+      
+      .mycards-flex-users
+        h1.adm__cmt-title= title
+        section.users
+          each user in users
+            .user
+              .photo
+                img(src=`img/users/${user.photo}`)
+              .info
+                .name= user.name
+                .email= user.email
+              dl
+                dt ID
+                dd= user._id
+                dt Role
+                dd= user.role
+
+              .funcs
+                .left
+                  button.icon.delete.btn.btn--dark.btn--super-tiny Del
+                .right
+                  button.icon.status.btn.btn--dark.btn--super-tiny Edit
+
+                //- https://codepen.io/icebob/pen/WvezpR

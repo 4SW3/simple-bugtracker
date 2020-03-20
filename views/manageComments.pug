@@ -1,0 +1,49 @@
+extends base
+
+include _navItem
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings', true)
+          +navItem('/myTracks', 'My tracks', 'briefcase', false)
+          +navItem('/myComments', 'My comments', 'star', false)
+          +navItem('#', 'Chat', 'credit-card', false)
+
+        - if (user.role === 'owner' || user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('/manageTracks', 'Manage tracks', 'map')
+              +navItem('/manageUsers', 'Manage users', 'users')
+              +navItem('/manageComments', 'Manage comments', 'star')
+
+      .comment-wrapper.adm-cmt-wrapper
+        h1.adm__cmt-title= title
+        each comment, index in comments
+          section
+            .heading-box
+              .description__text-two
+                .comment__item--user
+                  h2.title__cmt-adm= `${comment.track ? comment.track.title.toUpperCase() : 'TRACK DELETED'}`
+                  if comment.user
+                    .user__data.userdata__cmt-adm
+                      img(src=`/img/users/${comment.user.photo}` alt=`${comment.user.name}`, class='user__pic--img')
+                      .user__name: span= comment.user.name
+                  if comment.deletedComment
+                    h3.heading-secondary-adm: span Comment Deleted
+                  p.content__cmt-adm(id=`adm-cmt-content-${index}`)= comment.comment
+                  
+                  .cmt-adm-options
+                    -
+                      let url;
+                      if (comment.track) {
+                        url = `/track/${comment.track.slug}`
+                      } else {
+                        url = '#'
+                      }                  
+                    if comment.track
+                      a.btn-drawn.lined.a-link-btn(href=`${url}`)= `${comment.track ? 'Track Details' : 'Track Deleted'}`
+                    btn.btn-drawn.lined.adm-btn-del(id=`adm-cmt-${comment._id}`) Delete
