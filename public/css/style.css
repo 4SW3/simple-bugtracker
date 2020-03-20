@@ -710,7 +710,7 @@ a.btn-drawn {
   margin: 0 3rem;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   border: 2px solid #41403e;
-  padding: 1rem;
+  padding: 1rem 4rem;
   background-color: #fffffa !important;
   min-width: 75%;
   position: relative;
@@ -2143,4 +2143,9 @@ dd {
 
 .ql-editor strong {
   font-weight: bold;
+}
+
+.filter-flex-wrap {
+  display: flex;
+  align-items: center;
 }

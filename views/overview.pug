@@ -9,41 +9,44 @@ block content
         form.filter__form
           .panel-body
             fieldset.filter__filter-container
-              span.fieldset-span Priority
-              .filter__option-checkbox
-                input(type='checkbox', name='priority', id='low', value='Low')
-                label.filter__label(for='low') Low
-              .filter__option-checkbox
-                input(type='checkbox', name='priority', id='normal', value='Normal')
-                label.filter__label(for='normal') Normal
-              .filter__option-checkbox
-                input(type='checkbox', name='priority', id='high', value='High')
-                label.filter__label(for='high') High
+              .filter-flex-wrap
+                span.fieldset-span Priority
+                .filter__option-checkbox
+                  input(type='checkbox', name='priority', id='low', value='Low')
+                  label.filter__label(for='low') Low
+                .filter__option-checkbox
+                  input(type='checkbox', name='priority', id='normal', value='Normal')
+                  label.filter__label(for='normal') Normal
+                .filter__option-checkbox
+                  input(type='checkbox', name='priority', id='high', value='High')
+                  label.filter__label(for='high') High
             fieldset.filter__filter-container
-              span.fieldset-span Status
-              .filter__option-checkbox
-                input(type='checkbox', name='status', id='open', value='Open')
-                label.filter__label(for='open') Open
-              .filter__option-checkbox
-                input(type='checkbox', name='status', id='in-progress', value='InProgress')
-                label.filter__label(for='in-progress') In Progress
-              .filter__option-checkbox
-                input(type='checkbox', name='status', id='resolved' value='Resolved')
-                label.filter__label(for='resolved') Resolved
+              .filter-flex-wrap
+                span.fieldset-span Status
+                .filter__option-checkbox
+                  input(type='checkbox', name='status', id='open', value='Open')
+                  label.filter__label(for='open') Open
+                .filter__option-checkbox
+                  input(type='checkbox', name='status', id='in-progress', value='InProgress')
+                  label.filter__label(for='in-progress') In Progress
+                .filter__option-checkbox
+                  input(type='checkbox', name='status', id='resolved' value='Resolved')
+                  label.filter__label(for='resolved') Resolved
             fieldset.filter__filter-container
-              span.fieldset-span Sort By
-              .filter__option-checkbox
-                input(type='checkbox', name='sort', id='title', value='title')
-                label.filter__label(for='title') Title
-              .filter__option-checkbox
-                input(type='checkbox', name='sort', id='status', value='status')
-                label.filter__label(for='status') Status
-              .filter__option-checkbox
-                input(type='checkbox', name='sort', id='priority', value='priority')
-                label.filter__label(for='priority') Priority
-              .filter__option-checkbox
-                input(type='checkbox', name='sort', id='category', value='category')
-                label.filter__label(for='category') Category
+              .filter-flex-wrap
+                span.fieldset-span Sort By
+                .filter__option-checkbox
+                  input(type='checkbox', name='sort', id='title', value='title')
+                  label.filter__label(for='title') Title
+                .filter__option-checkbox
+                  input(type='checkbox', name='sort', id='status', value='status')
+                  label.filter__label(for='status') Status
+                .filter__option-checkbox
+                  input(type='checkbox', name='sort', id='priority', value='priority')
+                  label.filter__label(for='priority') Priority
+                .filter__option-checkbox
+                  input(type='checkbox', name='sort', id='category', value='category')
+                  label.filter__label(for='category') Category
             button.btn.btn--dark.btn--filter Filter
 
     .card-container
