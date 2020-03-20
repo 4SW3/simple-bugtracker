@@ -5,7 +5,7 @@ export const createTrack = async data => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/tracks',
+      url: '/api/v1/tracks',
       data
     });
 
@@ -25,7 +25,7 @@ export const deleteTrack = async idParam => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:3000/api/v1/tracks/${idParam}`,
+      url: `/api/v1/tracks/${idParam}`,
       data: null
     });
 
@@ -50,7 +50,7 @@ export const deleteTrack = async idParam => {
 
 export const searchTrack = async searchTerm => {
   try {
-    const url = `http://127.0.0.1:3000/api/v1/tracks/search?searchTerm=${searchTerm}`;
+    const url = `/api/v1/tracks/search?searchTerm=${searchTerm}`;
     const res = await axios({
       method: 'GET',
       url

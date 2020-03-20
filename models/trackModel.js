@@ -105,14 +105,14 @@ trackSchema.pre('save', function(next) {
 trackSchema.pre(/^find/, function(next) {
   if (this.options.comment === 'admView') this.find();
   else this.find({ closedTrack: { $ne: true } });
-  this.start = Date.now();
+  // this.start = Date.now();
   next();
 });
 
-trackSchema.post(/^find/, function(docs, next) {
-  console.log(`Query took ${Date.now() - this.start} milliseconds!`);
-  next();
-});
+// trackSchema.post(/^find/, function(docs, next) {
+//   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
+//   next();
+// });
 
 // Aggregation middleware
 // trackSchema.pre('aggregate', function(next) {

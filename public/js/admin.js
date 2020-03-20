@@ -5,7 +5,7 @@ export const admDelTrack = async idParam => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:3000/api/v1/tracks/adm/${idParam}`,
+      url: `/api/v1/tracks/adm/${idParam}`,
       data: null
     });
 
@@ -22,7 +22,6 @@ export const admDelTrack = async idParam => {
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
-    console.log(err.response);
   }
 };
 
@@ -30,7 +29,7 @@ export const admDelComment = async commentId => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:3000/api/v1/comments/adm/${commentId}`,
+      url: `/api/v1/comments/adm/${commentId}`,
       data: null
     });
 
@@ -50,17 +49,17 @@ export const admDelUser = async (userId, userName) => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:3000/api/v1/users/${userId}`
+      url: `/api/v1/users/${userId}`
     });
 
     if (res.status === 204) {
       await axios({
         method: 'DELETE',
-        url: 'http://127.0.0.1:3000/api/v1/tracks/admdeltrk'
+        url: '/api/v1/tracks/admdeltrk'
       });
       await axios({
         method: 'DELETE',
-        url: 'http://127.0.0.1:3000/api/v1/comments/admdelcmt'
+        url: '/api/v1/comments/admdelcmt'
       });
 
       showAlert(

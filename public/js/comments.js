@@ -3,9 +3,7 @@ import { showAlert } from './alerts';
 
 export const getAllComentsForTrack = async trackId => {
   try {
-    const res = await axios.get(
-      `http://127.0.0.1:3000/api/v1/tracks/${trackId}/comments`
-    );
+    const res = await axios.get(`/api/v1/tracks/${trackId}/comments`);
 
     return res;
   } catch (err) {
@@ -19,7 +17,7 @@ export const createComment = async (comment, trackId) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: `http://127.0.0.1:3000/api/v1/tracks/${trackId}/comments`,
+      url: `/api/v1/tracks/${trackId}/comments`,
       data: {
         comment
       }
@@ -38,7 +36,7 @@ export const editComment = async (comment, commentId) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://127.0.0.1:3000/api/v1/comments/${commentId}`,
+      url: `/api/v1/comments/${commentId}`,
       data: {
         comment
       }
@@ -57,7 +55,7 @@ export const deleteComment = async commentId => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:3000/api/v1/comments/${commentId}`,
+      url: `/api/v1/comments/${commentId}`,
       data: null
     });
 
