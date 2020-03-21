@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
@@ -24,6 +25,11 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // Global middlewares
+app.use(cors()); // Allow everyone to consume my api, code below allow only a certain website
+// app.use(cors({ origin: 'https://www.exampleapp.com/' }));
+
+app.options('*', cors()); // Only for a specific one -> app.options('/api/v1/track/:id', cors());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(helmet());
