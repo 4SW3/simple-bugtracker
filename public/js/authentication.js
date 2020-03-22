@@ -77,6 +77,6 @@ export const deleteMe = async () => {
       }, 1500);
     }
   } catch (err) {
-    showAlert('error', err);
+    showAlert('error', err.response.data.message);
   }
 };
