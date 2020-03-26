@@ -1,9 +1,12 @@
 # Simple Bugtracker
 
-Built with node.js, express, mongodb & mongoose.
-Still in active development.
+A personal project built with node.js, express, mongodb & mongoose.
+Still in active development. 
+As I learn more, I'm going to continue to improve the project's src code as well as add more features.
 
-## Para Fazer
+Readme will soon be updated.
+
+## Para Fazer (To Do)
 
 * Formulário quill para "track description"
 * Route Forgot Password
