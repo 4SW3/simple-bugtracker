@@ -13,8 +13,9 @@ Still in active development.
 * Fazer UI responsiva (media queries)
 * Add chat & mensagens privadas
 * Fazer melhorias contínuas no src code
-* Implementar readme.md completo e em inglês
 * Após todas implementações, permitir somente cargos acima de admin para criar novos usuários
+*
+* Implementar readme.md completo e em inglês
 
 ## Website
 
