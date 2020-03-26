@@ -72,6 +72,12 @@ exports.getTrack = catchAsync(async (req, res, next) => {
 exports.getLoginForm = (req, res) =>
   res.status(200).render('login', { title: 'Log into your account' });
 
+exports.getForgotPassForm = (req, res) =>
+  res.status(200).render('forgotPassword', { title: 'Forgot Password?' });
+
+exports.getResetPassForm = (req, res) =>
+  res.status(200).render('resetPassword', { title: 'Reset Password' });
+
 exports.getAccount = (req, res) =>
   res.status(200).render('account', { title: 'Your account' });
 

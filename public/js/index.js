@@ -5,7 +5,14 @@ import { quillOptions } from './quill';
 import DOM from './dom';
 import { showAlert } from './alerts';
 import { admDelTrack, admDelUser, admDelComment } from './admin';
-import { signup, login, logout, deleteMe } from './authentication';
+import {
+  signup,
+  login,
+  logout,
+  deleteMe,
+  forgotPass,
+  resetPass
+} from './authentication';
 import { createTrack, deleteTrack, searchTrack } from './track';
 import { updateSettings } from './updateSettings';
 import {
@@ -75,6 +82,40 @@ if (DOM.loginForm)
   });
 
 if (DOM.logOutBtn) DOM.logOutBtn.addEventListener('click', logout);
+
+/**
+ * Forgot Password
+ */
+const forgotPassForm = document.querySelector('.forgot--form');
+if (forgotPassForm)
+  forgotPassForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    document.querySelector('.btn--sendemail-passtoken').textContent =
+      'Sending Email...';
+
+    const email = document.getElementById('email').value;
+    await forgotPass(email);
+
+    document.querySelector('.btn--sendemail-passtoken').textContent = 'Send';
+  });
+
+/**
+ * Reset Password
+ */
+const resetPassForm = document.querySelector('.form--reset_pass');
+if (resetPassForm)
+  resetPassForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    document.querySelector('.btn--resetpass').textContent = 'Updating...';
+
+    const token = document.getElementById('token').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+
+    await resetPass(token, password, passwordConfirm);
+
+    document.querySelector('.btn--resetpass').textContent = 'Update';
+  });
 
 /**
  * Update settings || password

@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/', viewsController.getLoginForm);
 router.get('/signUp', viewsController.getSignUpForm);
+router.get('/forgotPass', viewsController.getForgotPassForm);
+router.get('/resetPass', viewsController.getResetPassForm);
 
 router.get('/overview', authController.protect, viewsController.getOverview);
 router.get('/track/:slug', authController.protect, viewsController.getTrack);

@@ -513,6 +513,14 @@ a.btn-drawn {
   left: 6px;
 }
 
+.btn-i:link {
+  padding: 1rem 1.6rem;
+  margin-left: 2rem;
+}
+.btn-i span {
+  margin-left: 0.75rem;
+}
+
 .hide-user {
   position: relative;
   top: -3.5rem;
@@ -1367,7 +1375,7 @@ a.btn-drawn {
   margin: 0 auto;
 }
 
-.login-form {
+.auth-form {
   margin: 0 auto;
   max-width: 55rem;
   background-color: #fff;
@@ -1865,6 +1873,12 @@ dd {
   align-items: center;
 }
 
+.forgot-pass {
+  float: right;
+  margin-top: -3rem;
+  font-size: 1.2rem;
+}
+
 @media only screen and (max-width: 1500px) {
   .panel-body {
     flex-wrap: wrap;
@@ -1979,11 +1993,11 @@ dd {
 }
 
 @media only screen and (min-device-width: 414px) and (max-device-width: 768px) {
-  .login-form h2 {
+  .auth-form h2 {
     font-size: 1.8rem;
   }
-  .login-form .form__label,
-  .login-form .form__input {
+  .auth-form .form__label,
+  .auth-form .form__input {
     font-size: 1.4rem;
   }
 
@@ -2104,14 +2118,14 @@ dd {
     margin: 0;
   }
 
-  .login-form h2 {
+  .auth-form h2 {
     font-size: 1.5rem;
   }
-  .login-form .form__label,
-  .login-form .form__input {
+  .auth-form .form__label,
+  .auth-form .form__input {
     font-size: 1.2rem;
   }
-  .login-form button {
+  .auth-form button {
     font-size: 1.4em;
     padding: 1rem 2rem;
   }

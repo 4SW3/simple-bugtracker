@@ -2,7 +2,7 @@ extends base
 
 block content
   main.main
-    .login-form
+    .auth-form
       h2.heading-secondary.ma-bt-lg= title
       form.form.form--login
         .form__group
@@ -13,3 +13,5 @@ block content
           input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
         .form__group
           button.btn.btn--green Login
+      .forgot-pass
+        a.btn-text(href='/forgotPass') Forgot Password?
