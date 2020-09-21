@@ -1,28 +1,28 @@
 # Simple Bugtracker
 
-A personal project built with node.js, express, mongodb & mongoose.
-Still in active development. 
-As I learn more, I'm going to continue to improve the project's src code as well as add more features.
+A personal project built with expressjs and mongoose on the backend and pug, css, javascript for frontend.
+<img src="img/print1.png" >
+<img src="img/print2.png" >
+<img src="img/print3.png" >
+<img src="img/print4.png" >
+<img src="img/print5.png" >
+<img src="img/print6.png" >
 
-Readme will soon be updated.
 
-## Para Fazer (To Do)
+## TODO
 
-* Formulário quill para "track description"
-* Route Forgot Password
-* Add feature para editar track
-* Add feature para editar usuário (somente para admins, owner)
-* Refazer a interface com SASS
-* Fazer UI responsiva (media queries)
-* Add chat & mensagens privadas
-* Fazer melhorias contínuas no src code
-* Após todas implementações, permitir somente cargos acima de admin para criar novos usuários
-*
-* Implementar readme.md completo e em inglês
+* Implement quill form for "track description"
+* Route for Forgot Password
+* Add feature to edit track
+* Add feature to edit user (only for roles admin and owner)
+* Redo interface using sass OR even redo frontend using react
+* Make all the pages fully responsive
+* Add chat and private messages
+* Continuosly improve src code
+* After every core features are implemented, only allow owner and admins to add users for related project
 
 ## Website
 
 [https://simplebugtracker.herokuapp.com](https://simplebugtracker.herokuapp.com)
 
-Account para teste: ibsum@example.com senha: 123456789
-Sign up Também está funcionando.
+Account for testing: ibsum@example.com password: 123456789 or just sign up.
