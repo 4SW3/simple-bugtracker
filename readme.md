@@ -1,6 +1,7 @@
 # Simple Bugtracker
 
-A personal project built with expressjs and mongoose on the backend and pug, css, javascript for frontend.
+A personal project built with expressjs and mongoose on the backend and pug, css, javascript for frontend. Some screenshots:
+
 <img src="img/print1.png" >
 <img src="img/print2.png" >
 <img src="img/print3.png" >
